@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -14,8 +15,7 @@ func main() {
 }
 
 func helloFunc(w http.ResponseWriter, r *http.Request) {
-	method := r.Method
-	fmt.Println("[method] " + method)
+	log.Print(r)
 
 	ans := map[string]string {
 		"message": "hello",
