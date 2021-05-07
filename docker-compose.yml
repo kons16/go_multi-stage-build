@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+  hello_app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      target: builder
+    volumes:
+      - ./services/hello_app:/go/src/hello_app
+    tty: true
+    ports:
+      - 8000:8000
+    command: sh -c "fresh;"
