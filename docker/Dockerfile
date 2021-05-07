@@ -1,5 +1,5 @@
 #######
-# Build container
+# Compile Go App
 #######
 
 FROM golang:1.14-alpine AS builder
@@ -13,8 +13,9 @@ COPY ./services/hello_app .
 
 RUN go get -u github.com/pilu/fresh && go build -o app
 
+
 #######
-# Exec container
+# Exec Binary file
 #######
 
 FROM scratch
@@ -24,3 +25,4 @@ EXPOSE 8000
 COPY --from=builder /go/src/hello_app/app /app
 
 CMD ["./app"]
+
